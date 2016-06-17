@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import Vuex from '../../src'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const state = {
   currentCard: 0,
@@ -23,25 +23,25 @@ const state = {
       'back': 'Is it an African or a European swallow?'
     }
   ]
-}
+};
 
 const mutations = {
   NEXT_CARD (state) {
-    state.currentCard++
+    state.currentCard++;
     if (state.currentCard >= state.cards.length) {
-      state.currentCard = 0
+      state.currentCard = 0;
     }
   },
 
   PREV_CARD (state) {
-    state.currentCard--
+    state.currentCard--;
     if (state.currentCard < 0) {
-      state.currentCard = 0
+      state.currentCard = 0;
     }
   }
-}
+};
 
 export default new Vuex.Store({
   state,
   mutations
-})
+});

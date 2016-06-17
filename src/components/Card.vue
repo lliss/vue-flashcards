@@ -1,21 +1,28 @@
 <template>
+  <button @click="prevCard">Prev</button>
   <div class="card">
     <div class="card-front"
-      <h3>{{ front }}</h3>
+      <h3>{{ currentCard.front }}</h3>
     </div>
     <div class="card-back">
-      <h3>{{ back }}</h3>
+      <h3>{{ currentCard.back }}</h3>
     </div>
   </div>
+  <button @click="nextCard">Next</button>
 </template>
 
 <script>
+
+import * as actions from '../actions'
+
 export default {
-  data () {
-    return {
-      front: 'What is your name?',
-      back: 'King Aurther'
-    }
+  vuex: {
+    getters: {
+      currentCard: function(state) {
+        return state.cards[state.currentCard];
+      }
+    },
+    actions: actions
   }
 }
 </script>
