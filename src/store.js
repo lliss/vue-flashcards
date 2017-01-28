@@ -1,5 +1,7 @@
-import Vue from 'vue'
-import Vuex from '../../src'
+'use strict';
+
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 Vue.use(Vuex)
 
@@ -27,16 +29,16 @@ const state = {
 
 const mutations = {
   NEXT_CARD (state) {
-    state.currentCard++
+    state.currentCard++;
     if (state.currentCard >= state.cards.length) {
-      state.currentCard = 0
+      state.currentCard = 0;
     }
   },
 
   PREV_CARD (state) {
-    state.currentCard--
+    state.currentCard--;
     if (state.currentCard < 0) {
-      state.currentCard = 0
+      state.currentCard = state.cards.length - 1;
     }
   }
 }

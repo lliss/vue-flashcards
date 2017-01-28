@@ -1,21 +1,29 @@
 <template>
-  <div class="card">
-    <div class="card-front"
-      <h3>{{ front }}</h3>
+  <div id="card-container" v-on:keyup.left="prevCard" v-on:keyup.right="nextCard">
+    <button @click="prevCard">prev</button>
+    <div class="card">
+      <div class="card-front"
+        <h3>{{ currentCard.front }}</h3>
+      </div>
+      <div class="card-back">
+        <h3>{{ currentCard.back }}</h3>
+      </div>
     </div>
-    <div class="card-back">
-      <h3>{{ back }}</h3>
-    </div>
+    <button @click="nextCard">next</button>
   </div>
 </template>
 
 <script>
+import * as actions from '../actions.js'
+
 export default {
-  data () {
-    return {
-      front: 'What is your name?',
-      back: 'King Aurther'
-    }
+  vuex: {
+    getters: {
+      currentCard: function(state) {
+        return state.cards[state.currentCard];
+      }
+    },
+    actions: actions
   }
 }
 </script>
